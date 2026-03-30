@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ringlove Programming Language</title>
+    <style>
+        :root {
+            --primary: #ef4444; /* Changed to red */
+            --bg: #110808; /* Darker, slightly reddish background */
+            --text: #fef2f2; /* Light reddish text */
+            --code-bg: #1f1212; /* Code background tinted red */
+            --header-bg: rgba(17, 8, 8, 0.9);
+            --border: #451a1a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding-top: 80px;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Main Content --- */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 { border-bottom: 2px solid var(--primary); padding-bottom: 10px; color: var(--text); }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        code { font-family: 'Fira Code', monospace; color: #fecaca; }
+
+        /* --- Download Section --- */
+        .download-box {
+            background: linear-gradient(135deg, #1f1212 0%, #110808 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover { 
+            transform: scale(1.05); 
+            background-color: #dc2626; /* Darker red on hover */
+        }
+
+        .os-note {
+            font-size: 0.9rem;
+            color: #fca5a5;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo-container">
+                <img src="https://avatars.githubusercontent.com/u/272357695?s=200&v=4" alt="Ringlove Logo" class="logo-img">
+                <span>Ringlove</span>
+            </a>
+            <div class="nav-links" id="dynamic-nav">
+                <a href="#download">Download</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="content">
+            <h1 id="about">The Ringlove Programming Language</h1>
+            <p>Ringlove is a kind of object oriented language for people that want a customizable programming language (by using the module keyword registration thing) and others.</p>
+
+<pre><code>class {Test}
+  func set (ID=(stuff))
+    print{"15", ID(Value)}
+
+  if(stuff.Value == "15") {
+    print{"The value is indeed", FromID=(stuff.Value)}
+  }
+}</code></pre>
+
+            <h1 id="thanks">Thanks!</h1>
+            <p>Thank you for checking out the project and supporting open-source language development.</p>
+        </section>
+
+        <hr style="border: 0; border-top: 1px solid var(--border); margin: 3rem 0;">
+
+        <section id="download" class="download-box">
+            <h2>Get Ringlove 1.0.0</h2>
+            <a href="https://github.com/ringlovelang/ringlove/releases/download/1.0.0/RingloveInstaller.exe" class="btn">
+                Download for Windows (.exe)
+            </a>
+            <p class="os-note">
+                <strong>Linux User?</strong> Linux requires manual download and compilation from the source code.
+            </p>
+        </section>
+    </main>
+
+    <script>
+        // Simple script to parse all H1 tags and put them in the header
+        const navContainer = document.getElementById('dynamic-nav');
+        const headers = document.querySelectorAll('h1');
+        
+        // Construct navigation dynamically
+        let navHtml = '';
+
+        headers.forEach(h1 => {
+            const id = h1.id;
+            const text = h1.textContent;
+            navHtml += `<a href="#${id}">${text}</a>`;
+        });
+
+        // Add the explicit download link at the end
+        const downloadLink = '<a href="#download">Download</a>';
+        navContainer.innerHTML = navHtml + downloadLink;
+    </script>
+
+</body>
+</html>
